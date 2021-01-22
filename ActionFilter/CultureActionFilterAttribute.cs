@@ -14,10 +14,8 @@ namespace i18n_Demo.ActionFilter {
                 Language = sessonCulture;
             }
             else {
-                if (filterContext.RouteData.Values.ContainsKey("lang")) {
-                    var routeLang = filterContext.RouteData.Values["lang"].ToString();
-                    Language = CultureHelper.GetImplementedCulture(routeLang);
-                }
+                var routeLang = filterContext.RouteData.Values["lang"].ToString();
+                Language = CultureHelper.GetImplementedCulture(routeLang);
             }
          
             var ci = new CultureInfo(Language);

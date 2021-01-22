@@ -9,7 +9,7 @@ namespace i18n_Demo {
             routes.MapRoute(
                 name: "Default",
                 url: "{lang}/{controller}/{action}/{id}",
-                defaults: new { lang = "", controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { lang = "Default", controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

@@ -40,7 +40,6 @@ namespace i18n_Demo.Helper {
                 isImplemented = GetAllImplementedCultures().Any(x => x.Value.ToLower().Equals(culture.ToLower())) ;
             }
 
-
             if (!isImplemented) {
                 return GetDefaultCulture();
             }
