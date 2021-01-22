@@ -1,0 +1,45 @@
+﻿@model i18n_Demo.Models.TextViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">i18n</p>
+
+</div>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>直接呼叫語系檔MultiLangResx</h3>
+        <p>@MultiLangResx.Resources.Resource.Address</p>
+        <p>@MultiLangResx.Resources.Resource.Submit</p>
+    </div>
+    <div class="col-md-4">
+        <h3>使用DataAnnotations</h3>
+        <p>@Html.LabelFor(x => x.Address)</p>
+        <p>@Html.LabelFor(x => x.Submit)</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Cookie Language：@ViewBag.CookieCulture</h3>
+    </div>
+
+    <hr />
+    <table class="table">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.Name, (IEnumerable<SelectListItem>)ViewData["LangSelectList"])
+            </td>
+            <td>
+                <input type="submit"
+                       value="@Html.DisplayName( "Submit")">
+            </td>
+        </tr>
+    </table>
+</div>
+}
