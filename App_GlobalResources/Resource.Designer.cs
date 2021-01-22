@@ -61,6 +61,15 @@ namespace MultiLangResx.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 關於 的當地語系化字串。
+        /// </summary>
+        public static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 地址 的當地語系化字串。
         /// </summary>
         public static string Address {
@@ -70,11 +79,38 @@ namespace MultiLangResx.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 i18n 的當地語系化字串。
+        /// </summary>
+        public static string ApplicationName {
+            get {
+                return ResourceManager.GetString("ApplicationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 連絡人 的當地語系化字串。
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 語言 的當地語系化字串。
         /// </summary>
         public static string CultureName {
             get {
                 return ResourceManager.GetString("CultureName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 首頁 的當地語系化字串。
+        /// </summary>
+        public static string Index {
+            get {
+                return ResourceManager.GetString("Index", resourceCulture);
             }
         }
         

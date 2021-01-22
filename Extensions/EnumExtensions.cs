@@ -20,12 +20,8 @@ namespace i18n_Demo.Extensions {
         /// <returns></returns>
         public static string GetDescription(this Enum self) {
             FieldInfo fi = self.GetType().GetField(self.ToString());
-            DescriptionAttribute[] attributes = null;
-
             if (fi != null) {
-                attributes =
-                    (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
-
+                DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
                 if (attributes != null && attributes.Length > 0)
                     return attributes[0].Description;
             }
