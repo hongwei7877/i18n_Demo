@@ -3,4 +3,4 @@
     
 # VisualStudio擴充套件
 *ResX Resource Manager*  
-https://github.com/dotnet/ResXResourceManage
+https://marketplace.visualstudio.com/items?itemName=TomEnglert.ResXManager
