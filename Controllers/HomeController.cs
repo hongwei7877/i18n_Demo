@@ -9,9 +9,9 @@ namespace i18n_Demo.Controllers {
     public class HomeController : Controller {
         public ActionResult Index() {
 
-            string sessonCulture = SessionHelper.Current.Culture;
-            if (sessonCulture != null) {
-                ViewBag.CookieCulture = sessonCulture;
+            string cookieCulture = Request.Cookies["_culture"]?.Value;
+            if (cookieCulture != null) {
+                ViewBag.CookieCulture = cookieCulture;
             }
             else {
                 ViewBag.CookieCulture = "(None)";
@@ -27,7 +27,7 @@ namespace i18n_Demo.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(TextViewModel vm) {
-
+            
             ViewData["LangSelectList"] = CultureHelper.GetAllImplementedCultures()
                 .ToSelectList(x => x.Value,
                               x => x.Value,
@@ -37,9 +37,9 @@ namespace i18n_Demo.Controllers {
             var culture = CultureHelper.GetImplementedCulture(vm.Name);
 
             if (culture != null) {
-                SessionHelper.Current.Culture = culture;
+                Response.Cookies.Add(CookieHelper.SetCookie(Request,culture));
             }
-            ViewBag.CookieCulture = SessionHelper.Current.Culture;
+            ViewBag.CookieCulture = Request.Cookies["_culture"].Value;
 
             #endregion
             return View();

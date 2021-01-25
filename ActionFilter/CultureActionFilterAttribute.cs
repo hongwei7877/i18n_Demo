@@ -7,7 +7,7 @@ namespace i18n_Demo.ActionFilter {
         private string Language;
         public override void OnActionExecuted(ActionExecutedContext filterContext) {
 
-            string sessonCulture = SessionHelper.Current.Culture;
+            string sessonCulture = filterContext.HttpContext.Request.Cookies["_culture"]?.Value;
             if (sessonCulture != null) {
                 Language = sessonCulture;
             }
