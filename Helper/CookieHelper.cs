@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web;
+using System.Web.Mvc;
 
 namespace i18n_Demo.Helper {
     public class CookieHelper {
@@ -7,22 +8,15 @@ namespace i18n_Demo.Helper {
 
         }
 
-        public static HttpCookie SetCookie(HttpRequestBase request, string culture) {
+        public static void SetCookie(ControllerContext context, string culture) {
 
-            HttpCookie cultureCookie = request.Cookies["_culture"];
-            if (cultureCookie != null) {
-                cultureCookie.Value = culture;
-            }
-            else {
-                cultureCookie = new HttpCookie("_culture") {
-                    Value = culture,
-                    HttpOnly = true,
-                    Expires = DateTime.MinValue
-                };
-            }
-                
+            var cultureCookie = new HttpCookie("_culture") {
+                Value = culture,
+                HttpOnly = true,
+                Expires = DateTime.MinValue
+            };
 
-            return cultureCookie;
+            context.HttpContext.Response.Cookies.Add(cultureCookie);
         }
 
     }

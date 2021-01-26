@@ -5,11 +5,22 @@ using System.Web.Mvc;
 namespace i18n_Demo.ActionFilter {
     public class CultureActionFilterAttribute : ActionFilterAttribute {
         private string Language;
+
+        public override void OnActionExecuting(ActionExecutingContext filterContext) {
+            var routeLang = filterContext.RouteData.Values["lang"].ToString();
+            var routeController = filterContext.RouteData.Values["controller"].ToString();
+            string culture = filterContext.HttpContext.Request.Cookies["_culture"]?.Value;
+
+            if (routeLang.Equals("Default") && culture != null) {
+                filterContext.Result = new RedirectResult($"/{culture}/{routeController}");
+            }
+
+        }
         public override void OnActionExecuted(ActionExecutedContext filterContext) {
 
-            string sessonCulture = filterContext.HttpContext.Request.Cookies["_culture"]?.Value;
-            if (sessonCulture != null) {
-                Language = sessonCulture;
+            string culture = filterContext.HttpContext.Request.Cookies["_culture"]?.Value;
+            if (culture != null) {
+                Language = culture;
             }
             else {
                 var routeLang = filterContext.RouteData.Values["lang"].ToString();

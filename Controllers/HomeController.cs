@@ -27,7 +27,7 @@ namespace i18n_Demo.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(TextViewModel vm) {
-            
+
             ViewData["LangSelectList"] = CultureHelper.GetAllImplementedCultures()
                 .ToSelectList(x => x.Value,
                               x => x.Value,
@@ -37,12 +37,12 @@ namespace i18n_Demo.Controllers {
             var culture = CultureHelper.GetImplementedCulture(vm.Name);
 
             if (culture != null) {
-                Response.Cookies.Add(CookieHelper.SetCookie(Request,culture));
+                CookieHelper.SetCookie(this.ControllerContext, culture);
             }
             ViewBag.CookieCulture = Request.Cookies["_culture"].Value;
 
             #endregion
-            return View();
+            return Redirect($"/{culture}");
         }
 
         public ActionResult About() {
