@@ -10,9 +10,22 @@ namespace i18n_Demo.ActionFilter {
             var routeLang = filterContext.RouteData.Values["lang"].ToString();
             var routeController = filterContext.RouteData.Values["controller"].ToString();
             string culture = filterContext.HttpContext.Request.Cookies["_culture"]?.Value;
+            string defaultCulture = CultureHelper.GetDefaultCulture();
 
-            if (routeLang.Equals("Default") && culture != null) {
-                filterContext.Result = new RedirectResult($"/{culture}/{routeController}");
+            if (culture != null) {
+                if (routeLang.ToLower().Equals("default")) {
+                    filterContext.Result = new RedirectResult($"/{culture}/{routeController}");
+                }
+                if (routeLang.ToLower() != culture.ToLower()) {
+                    filterContext.Result = new RedirectResult($"/{culture}/{routeController}");
+                }
+            }
+            else {
+                if (routeLang.ToLower().Equals("default")) {
+                    filterContext.Result = new RedirectResult($"/{defaultCulture}/{routeController}");
+                    CookieHelper.SetCookie(filterContext.Controller.ControllerContext, defaultCulture);
+                }
+
             }
 
         }

@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>關於</value>
   </data>
+  <data name="AboutDetail" xml:space="preserve">
+    <value>關於我們細項</value>
+  </data>
   <data name="Address" xml:space="preserve">
     <value>地址</value>
   </data>
@@ -129,11 +132,17 @@
   <data name="Contact" xml:space="preserve">
     <value>連絡人</value>
   </data>
+  <data name="ContactDetail" xml:space="preserve">
+    <value>連絡我們細項</value>
+  </data>
   <data name="CultureName" xml:space="preserve">
     <value>語言</value>
   </data>
   <data name="Index" xml:space="preserve">
     <value>首頁</value>
+  </data>
+  <data name="LayoutHeaderFooter" xml:space="preserve">
+    <value>我的 ASP.NET 應用程式</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>確定</value>

@@ -16,38 +16,38 @@ namespace i18n_Demo {
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
         protected void Application_BeginRequest(object sender, EventArgs e) {
-            HttpCookie cultureCookie = Request.Cookies["_culture"];
-            CultureInfo ci = default;
-            try {              
-                if (cultureCookie != null) {
-                    ci = new CultureInfo(cultureCookie.Value);
-                }
-                else {
-                    //取得用戶端語言喜好設定(已排序的字串陣列)
-                    var userLanguages = Request.UserLanguages;
-                    if (userLanguages.Length > 0) {
-                        try {
-                            ci = new CultureInfo(userLanguages[0]);
-                        }
-                        catch (CultureNotFoundException) {
-                            ci = CultureInfo.InvariantCulture;
-                        }
-                    }
-                    else {
-                        ci = CultureInfo.InvariantCulture;
-                    }
-                }
-            }
-            catch (Exception)
-            {
+            //HttpCookie cultureCookie = Request.Cookies["_culture"];
+            //CultureInfo ci = default;
+            //try {              
+            //    if (cultureCookie != null) {
+            //        ci = new CultureInfo(cultureCookie.Value);
+            //    }
+            //    else {
+            //        //取得用戶端語言喜好設定(已排序的字串陣列)
+            //        var userLanguages = Request.UserLanguages;
+            //        if (userLanguages.Length > 0) {
+            //            try {
+            //                ci = new CultureInfo(userLanguages[0]);
+            //            }
+            //            catch (CultureNotFoundException) {
+            //                ci = CultureInfo.InvariantCulture;
+            //            }
+            //        }
+            //        else {
+            //            ci = CultureInfo.InvariantCulture;
+            //        }
+            //    }
+            //}
+            //catch (Exception)
+            //{
 
-                throw;
-            }
-            finally
-            {
-                //System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
-                //System.Threading.Thread.CurrentThread.CurrentCulture = ci;
-            }
+            //    throw;
+            //}
+            //finally
+            //{
+            //    System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            //    System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+            //}
         }
     }
 }

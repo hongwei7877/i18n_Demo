@@ -2,6 +2,7 @@
 using i18n_Demo.Extensions;
 using i18n_Demo.Helper;
 using i18n_Demo.Models;
+using MultiLangResx.Resources;
 using System.Web.Mvc;
 
 namespace i18n_Demo.Controllers {
@@ -11,7 +12,9 @@ namespace i18n_Demo.Controllers {
 
             string cookieCulture = Request.Cookies["_culture"]?.Value;
             if (cookieCulture != null) {
-                ViewBag.CookieCulture = cookieCulture;
+
+                var ln = System.Threading.Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName;
+                ViewBag.CookieCulture = cookieCulture + $"  CI :{ln}";
             }
             else {
                 ViewBag.CookieCulture = "(None)";
@@ -46,14 +49,12 @@ namespace i18n_Demo.Controllers {
         }
 
         public ActionResult About() {
-            ViewBag.Message = "Your application description page.";
-
+            ViewBag.Message = Resource.AboutDetail;
             return View();
         }
 
         public ActionResult Contact() {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Message = Resource.ContactDetail;
             return View();
         }
     }
