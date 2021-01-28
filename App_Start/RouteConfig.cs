@@ -10,7 +10,7 @@ namespace i18n_Demo {
             routes.MapRoute(
                 name: "Culture",
                 url: "{lang}/{controller}/{action}/{id}",
-                defaults: new { lang = "Default", controller = "Home", action = "Index", id = UrlParameter.Optional },
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 constraints: new { lang =  $"({langConstraint})"}
             );
 
