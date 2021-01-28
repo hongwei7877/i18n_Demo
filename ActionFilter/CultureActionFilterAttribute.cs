@@ -28,7 +28,7 @@ namespace i18n_Demo.ActionFilter {
                 
             }
             else {
-                if (routeLang.ToLower().Equals("default")) {
+                if (routeLang == null || routeLang.ToLower().Equals("default")) {
                     filterContext.Result = new RedirectResult($"/{defaultCulture}/{routeController}/{routeAction}");
                     CookieHelper.SetCookie(filterContext.Controller.ControllerContext, defaultCulture);
                 }
