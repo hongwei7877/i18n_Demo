@@ -3,6 +3,7 @@ using i18n_Demo.Extensions;
 using i18n_Demo.Helper;
 using i18n_Demo.Models;
 using MultiLangResx.Resources;
+using System.Globalization;
 using System.Web.Mvc;
 
 namespace i18n_Demo.Controllers {
@@ -37,11 +38,10 @@ namespace i18n_Demo.Controllers {
                               true);
 
             #region 更改語系
-            var culture = CultureHelper.GetImplementedCulture(vm.Name);
-
-            if (culture != null) {
-                CookieHelper.SetCookie(this.ControllerContext, culture);
-            }
+            var culture = CultureHelper.GetImplementedCulture(vm.Name);          
+            CookieHelper.SetCookie(this.ControllerContext, culture);
+            var ci = new CultureInfo(culture);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
             ViewBag.CookieCulture = Request.Cookies["_culture"].Value;
 
             #endregion
