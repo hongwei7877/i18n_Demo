@@ -70,6 +70,15 @@ namespace MultiLangResx.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 關於我們細項 的當地語系化字串。
+        /// </summary>
+        public static string AboutDetail {
+            get {
+                return ResourceManager.GetString("AboutDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 地址 的當地語系化字串。
         /// </summary>
         public static string Address {
@@ -97,6 +106,15 @@ namespace MultiLangResx.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 連絡我們細項 的當地語系化字串。
+        /// </summary>
+        public static string ContactDetail {
+            get {
+                return ResourceManager.GetString("ContactDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 語言 的當地語系化字串。
         /// </summary>
         public static string CultureName {
@@ -111,6 +129,15 @@ namespace MultiLangResx.Resources {
         public static string Index {
             get {
                 return ResourceManager.GetString("Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 我的 ASP.NET 應用程式 的當地語系化字串。
+        /// </summary>
+        public static string LayoutHeaderFooter {
+            get {
+                return ResourceManager.GetString("LayoutHeaderFooter", resourceCulture);
             }
         }
         

@@ -66,7 +66,7 @@ namespace i18n_Demo.Helper {
             return cultureList.AsEnumerable<Culture>();
         }
 
-        private static string GetDefaultCulture() {
+        public static string GetDefaultCulture() {
             return CultureEnum.zhTW.GetDescription(); //預設為zh-TW 繁中
         }
     }
